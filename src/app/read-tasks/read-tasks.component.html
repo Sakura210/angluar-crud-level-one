@@ -1,0 +1,50 @@
+<div class="row m-b-18px">
+  <div class="col-md-12">
+      <!-- button to create new product -->
+      <a (click)="createTask()" class='btn btn-primary pull-right'>
+          <span class='glyphicon glyphicon-plus'></span> Create Task
+      </a>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <!-- HTML table for our list of product records -->
+      <table class='table table-hover table-responsive table-bordered'>
+
+          <tr>
+              <th>TaskId</th>
+              <th>TaskName</th>
+              <th>CreatedDate</th>
+              <th>Version</th>
+              <th>Status</th>
+              <th>Operations</th>
+          </tr>
+
+          <!-- Use *ngFor directive to loop throught our list of products. -->
+          <tr *ngFor="let task of tasks">
+              <td>{{task._id}}</td>
+              <td>{{task.name}}</td>
+              <td>{{task.Created_date}}</td>
+              <td>{{task.__v}}</td>
+              <td>{{task.status}}</td>
+              <td>
+                  <!-- read one Task button -->
+                  <a (click)="readOneTask(task._id)" class='btn btn-primary m-r-5px'>
+                      <span class='glyphicon glyphicon-eye-open'></span> Read
+                  </a>
+
+                  <!-- edit Task button -->
+                  <a (click)="updateTask(task._id)" class='btn btn-info m-r-5px'>
+                      <span class='glyphicon glyphicon-edit'></span> Edit
+                  </a>
+
+                  <!-- delete Task button -->
+                  <a (click)="deleteTask(task._id)" class='btn btn-danger m-r-5px'>
+                      <span class='glyphicon glyphicon-remove'></span> Delete
+                  </a>
+              </td>
+          </tr>
+      </table>
+  </div>
+</div>
